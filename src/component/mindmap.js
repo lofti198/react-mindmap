@@ -18,7 +18,7 @@ const plugins = [
   TopicReferencePlugin(),
   SearchPlugin(),
   TopologyDiagramPlugin(),
-  JsonSerializerPlugin()
+  JsonSerializerPlugin(),
 ];
 
 export class Mindmap extends React.Component {
@@ -28,7 +28,7 @@ export class Mindmap extends React.Component {
   }
 
   diagram;
-  diagramRef = ref => {
+  diagramRef = (ref) => {
     this.diagram = ref;
     this.setState({});
   };
@@ -38,13 +38,13 @@ export class Mindmap extends React.Component {
     this.state = { model };
   }
 
-  onClickUndo = e => {
+  onClickUndo = (e) => {
     const props = this.diagram.getDiagramProps();
     const { controller } = props;
     controller.run("undo", props);
   };
 
-  onClickRedo = e => {
+  onClickRedo = (e) => {
     const props = this.diagram.getDiagramProps();
     const { controller } = props;
     controller.run("redo", props);
@@ -71,7 +71,7 @@ export class Mindmap extends React.Component {
       onClickUndo: this.onClickUndo,
       onClickRedo: this.onClickRedo,
       canUndo,
-      canRedo
+      canRedo,
     };
     return <Toolbar {...toolbarProps} />;
   }
@@ -79,7 +79,7 @@ export class Mindmap extends React.Component {
   onChange = (model, callback) => {
     this.setState(
       {
-        model
+        model,
       },
       callback
     );
