@@ -1,5 +1,5 @@
 import React from "react";
-import Mindmap from "./component/mindmap";
+import Mindmap from "./component/Mindmap";
 import "./App.css";
 
 function App() {
