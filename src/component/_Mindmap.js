@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef,useState,useEffect} from "react";
 import { Diagram } from "@blink-mind/renderer-react";
 import RichTextEditorPlugin from "@blink-mind/plugin-rich-text-editor";
 import { JsonSerializerPlugin } from "@blink-mind/plugin-json-serializer";
@@ -21,22 +21,9 @@ const plugins = [
   JsonSerializerPlugin(),
 ];
 
-export class Mindmap extends React.Component {
-  constructor(props) {
-    super(props);
-    this.initModel();
-  }
-
-  diagram;
-  diagramRef = (ref) => {
-    this.diagram = ref;
-    this.setState({});
-  };
-
-  initModel() {
-    const model = generateSimpleModel();
-    this.state = { model };
-  }
+const Mindmap = () => {
+  const [model,setModel] = useState(()=> generateSimpleModel())
+  
 
   onClickUndo = (e) => {
     const props = this.diagram.getDiagramProps();
@@ -85,14 +72,12 @@ export class Mindmap extends React.Component {
     );
   };
 
-  render() {
-    return (
-      <div className="mindmap">
-        {this.diagram && this.renderToolbar()}
-        {this.renderDiagram()}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="mindmap">
+      {diagram && renderToolbar()}
+      {renderDiagram()}
+    </div>
+  );
+};
 
 export default Mindmap;
